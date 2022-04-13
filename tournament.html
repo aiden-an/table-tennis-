@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="img singles"><img src="singles.jpg" alt=""></div>
+
+        <div class="img doubles"><img src="doubles.jpg" alt=""></div>
+        
+       
+
+    </div>
+</body>
+<style>
+    html, body, div{margin:0;padding:0;}
+    .img{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;text-align: center;}
+    .img img{height:100%;}
+</style>
+<script>
+    var fnSingles = function(){
+        $(".signgles img").attr("src","singles.jpg");
+        $(".img img").css({
+            height: $(window).height()+"px"
+        });
+        $(".signgles").fadeIn(400);
+        $(".doubles").fadeOut(400);
+        clearTimeout(setSinges);
+        setDoubles = setTimeout(fnDoubles,20000);
+    };
+    var fnDoubles = function(){
+        $(".signgles img").attr("src","doubles.jpg");
+        $(".signgles").fadeOut(400);
+        $(".doubles").fadeIn(400);
+        $(".img img").css({
+            height: $(window).height()+"px"
+        });
+        clearTimeout(setDoubles);
+        setSinges = setTimeout(fnSingles,10000);
+    };
+
+    var setSinges = setTimeout(fnSingles,100);
+    var setDoubles;
+
+    $(function(){
+        $(".img img").css({
+            height: $(window).height()+"px"
+        });
+    });
+</script>
+</html>
